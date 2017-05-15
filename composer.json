@@ -35,12 +35,12 @@
   },
   "autoload": {
     "psr-4": {
-      "SR\\Cocoa\\Transformer\\Markdown\\": "lib/"
+      "SR\\Cocoa\\Transformer\\Parsedown\\": "lib/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "SR\\Cocoa\\Transformer\\Markdown\\Tests\\": "tests/"
+      "SR\\Cocoa\\Transformer\\Parsedown\\Tests\\": "tests/"
     }
   },
   "minimum-stability": "dev",

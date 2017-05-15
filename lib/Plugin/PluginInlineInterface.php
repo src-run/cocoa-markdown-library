@@ -9,8 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace SR\Cocoa\Transformer\Parsedown\Runtime\Tests\Fixtures;
+namespace SR\Cocoa\Transformer\Parsedown\Plugin;
 
-class CustomParsedown extends \Parsedown
+interface PluginInlineInterface extends PluginInterface
 {
+    /**
+     * @param array $excerpt
+     *
+     * @return null|array
+     */
+    public function invoke(array $excerpt);
 }

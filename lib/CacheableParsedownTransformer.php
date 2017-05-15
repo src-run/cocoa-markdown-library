@@ -9,8 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace SR\Cocoa\Transformer\Parsedown\Runtime\Tests\Fixtures;
+namespace SR\Cocoa\Transformer\Parsedown;
 
-class CustomParsedown extends \Parsedown
+use SR\Cocoa\Transformer\AbstractCacheableTransformer;
+
+class CacheableParsedownTransformer extends AbstractCacheableTransformer
 {
+    use ParsedownTransformerTrait;
 }

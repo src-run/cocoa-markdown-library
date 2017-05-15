@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace SR\Cocoa\Transformer\Parsedown\tests;
+namespace SR\Cocoa\Transformer\Parsedown\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Cache\CacheItemPoolInterface;
-use SR\Cocoa\Transformer\Markdown\ParsedownTransformer;
+use SR\Cocoa\Transformer\Parsedown\ParsedownTransformer;
 use SR\Cocoa\Transformer\TransformerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
