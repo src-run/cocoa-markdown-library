@@ -16,10 +16,21 @@ use SR\Cocoa\Transformer\Parsedown\Plugin\PluginInterface;
 interface ParsedownRuntimeInterface
 {
     /**
+     * @param array $options
+     */
+    public function setOptions(array $options);
+
+    /**
      * @param PluginInterface $plugin
      * @param bool            $before
-     *
-     * @return self
      */
-    public function registerPlugin(PluginInterface $plugin, bool $before = false): self;
+    public function registerPlugin(PluginInterface $plugin, bool $before = false);
+
+    /**
+     * @param string $string
+     * @param bool   $block
+     *
+     * @return string
+     */
+    public function invokeRuntime(string $string, bool $block = true): string;
 }

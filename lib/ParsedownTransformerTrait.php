@@ -11,9 +11,9 @@
 
 namespace SR\Cocoa\Transformer\Parsedown;
 
-use SR\Cocoa\Transformer\Parsedown\Plugin\InlineIconPlugin;
-use SR\Cocoa\Transformer\Parsedown\Plugin\InlineNewlinePlugin;
-use SR\Cocoa\Transformer\Parsedown\Runtime\ParsedownRuntime;
+use SR\Cocoa\Transformer\Parsedown\Runtime\ParsedownExtraRuntime;
+use SR\Cocoa\Transformer\Parsedown\Runtime\ParsedownNormalRuntime;
+use SR\Cocoa\Transformer\Parsedown\Runtime\ParsedownRuntimeInterface;
 use SR\Exception\Runtime\RuntimeException;
 
 trait ParsedownTransformerTrait
@@ -21,85 +21,33 @@ trait ParsedownTransformerTrait
     /**
      * @var bool
      */
-    private $enableExtras = true;
+    private $extra = true;
 
     /**
-     * @var bool
+     * @var ParsedownRuntimeInterface
      */
-    private $markupEscaping = true;
+    private $runtime;
 
     /**
-     * @var bool
-     */
-    private $autoLineBreaking = false;
-
-    /**
-     * @var bool
-     */
-    private $urlLinking = true;
-
-    /**
-     * @var \Parsedown|null
-     */
-    private $customParsedown;
-
-    /**
-     * @param bool $extras
+     * @param bool $enable
      *
-     * @return self
+     * @return ParsedownTransformerTrait
      */
-    public function setEnableExtras(bool $extras): self
+    public function setExtra(bool $enable): self
     {
-        $this->enableExtras = $extras;
+        $this->extra = $enable;
 
         return $this;
     }
 
     /**
-     * @param bool $markupEscaping
+     * @param ParsedownRuntimeInterface $parsedown
      *
-     * @return self
+     * @return ParsedownTransformerTrait
      */
-    public function setMarkupEscaping(bool $markupEscaping): self
+    public function setRuntime(ParsedownRuntimeInterface $parsedown): self
     {
-        $this->markupEscaping = $markupEscaping;
-
-        return $this;
-    }
-
-    /**
-     * @param bool $autoLineBreaking
-     *
-     * @return self
-     */
-    public function setAutoLineBreaking(bool $autoLineBreaking): self
-    {
-        $this->autoLineBreaking = $autoLineBreaking;
-
-        return $this;
-    }
-
-    /**
-     * @param bool $urlLinking
-     *
-     * @return self
-     */
-    public function setUrlLinking(bool $urlLinking): self
-    {
-        $this->urlLinking = $urlLinking;
-
-        return $this;
-    }
-
-    /**
-     * @param \Parsedown $parsedown
-     *
-     * @return self
-     */
-    public function setCustomParsedown(\Parsedown $parsedown): self
-    {
-        $this->setEnableExtras(false);
-        $this->customParsedown = $parsedown;
+        $this->runtime = $parsedown;
 
         return $this;
     }
@@ -111,36 +59,22 @@ trait ParsedownTransformerTrait
      */
     protected function runTransformation(string $string): string
     {
-        return $this->setupRuntime($this->getParsedownTransformer())->text($string);
-    }
-
-    private function setupRuntime(\Parsedown $runtime): \Parsedown
-    {
-        $runtime->setMarkupEscaped($this->markupEscaping);
-        $runtime->setBreaksEnabled($this->autoLineBreaking);
-        $runtime->setUrlsLinked($this->urlLinking);
-
-        if ($runtime instanceof ParsedownRuntime) {
-            $runtime->registerPlugin(new InlineIconPlugin());
-            $runtime->registerPlugin(new InlineNewlinePlugin(), true);
-        }
-
-        return $runtime;
+        return $this->getParsedownTransformer()->invokeRuntime($string);
     }
 
     /**
-     * @return \Parsedown
+     * @return ParsedownRuntimeInterface
      */
-    private function getParsedownTransformer(): \Parsedown
+    private function getParsedownTransformer(): ParsedownRuntimeInterface
     {
-        if ($this->customParsedown instanceof \Parsedown) {
-            if ($this->enableExtras) {
+        if ($this->runtime instanceof \Parsedown) {
+            if ($this->extra) {
                 throw new RuntimeException('A custom parsedown instance cannot be used when the extras flag is also enabled.');
             }
 
-            return clone $this->customParsedown;
+            return clone $this->runtime;
         }
 
-        return $this->enableExtras ? new ParsedownRuntime() : new \Parsedown();
+        return $this->extra ? new ParsedownExtraRuntime() : new ParsedownNormalRuntime();
     }
 }

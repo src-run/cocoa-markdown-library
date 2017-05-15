@@ -23,7 +23,8 @@
     "erusev/parsedown-extra": "~0.7",
     "psr/cache": "~1.0",
     "src-run/augustus-exception-library": "~0.7",
-    "src-run/cocoa-transformer-library": "~0.2"
+    "src-run/cocoa-transformer-library": "~0.2",
+    "symfony/options-resolver": "~3.0"
   },
   "require-dev": {
     "codacy/coverage": "~1.0",

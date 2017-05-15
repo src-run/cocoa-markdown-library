@@ -14,6 +14,7 @@ namespace SR\Cocoa\Transformer\Parsedown\Tests;
 use PHPUnit\Framework\TestCase;
 use Psr\Cache\CacheItemPoolInterface;
 use SR\Cocoa\Transformer\Parsedown\ParsedownTransformer;
+use SR\Cocoa\Transformer\Parsedown\Runtime\ParsedownNormalRuntime;
 use SR\Cocoa\Transformer\TransformerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
@@ -51,11 +52,12 @@ class ParsedownTransformerTest extends TestCase
         $transformer = $this->getParsedownTransformerInstance();
 
         if (false !== strpos($providedFile, 'extras-disabled')) {
-            $transformer->setEnableExtras(false);
+            $transformer->setExtra(false);
         }
 
         if (false !== strpos($providedFile, 'custom-instance')) {
-            $transformer->setCustomParsedown(new \Parsedown());
+            $transformer->setExtra(false);
+            $transformer->setRuntime(new ParsedownNormalRuntime());
         }
 
         $this->assertSame($expected, $transformer->transform($provided),

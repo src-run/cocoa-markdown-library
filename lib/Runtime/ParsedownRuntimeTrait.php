@@ -16,8 +16,9 @@ use SR\Cocoa\Transformer\Parsedown\Plugin\PluginInlineInterface;
 use SR\Cocoa\Transformer\Parsedown\Plugin\PluginInterface;
 use SR\Exception\Logic\BadMethodCallException;
 use SR\Exception\Runtime\RuntimeException;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ParsedownRuntime extends \ParsedownExtra implements ParsedownRuntimeInterface
+trait ParsedownRuntimeTrait
 {
     /**
      * @var PluginInlineInterface[]
@@ -49,12 +50,42 @@ class ParsedownRuntime extends \ParsedownExtra implements ParsedownRuntimeInterf
     }
 
     /**
+     * @param string $string
+     * @param bool   $block
+     *
+     * @return string
+     */
+    public function invokeRuntime(string $string, bool $block = true): string
+    {
+        return $block ? $this->text($string) : $this->line($string);
+    }
+
+    /**
+     * @param array $options
+     */
+    public function setOptions(array $options)
+    {
+        $options = (new OptionsResolver())
+            ->setDefaults([
+                'breaks' => false,
+                'escape-markup' => true,
+                'link-urls' => true,
+            ])
+            ->setAllowedTypes('breaks', ['bool'])
+            ->setAllowedTypes('escape-markup', ['bool'])
+            ->setAllowedTypes('link-urls', ['bool'])
+            ->resolve($options);
+
+        $this->setBreaksEnabled($options['breaks']);
+        $this->setMarkupEscaped($options['escape-markup']);
+        $this->setUrlsLinked($options['link-urls']);
+    }
+
+    /**
      * @param PluginInterface $plugin
      * @param bool            $before
-     *
-     * @return ParsedownRuntimeInterface
      */
-    public function registerPlugin(PluginInterface $plugin, bool $before = false): ParsedownRuntimeInterface
+    public function registerPlugin(PluginInterface $plugin, bool $before = false)
     {
         if (!$plugin instanceof PluginBlockInterface && !$plugin instanceof PluginInlineInterface) {
             throw new RuntimeException('Plugin type "%s" is not supported.', $plugin->type());
@@ -62,8 +93,6 @@ class ParsedownRuntime extends \ParsedownExtra implements ParsedownRuntimeInterf
 
         $this->registerInst($plugin);
         $this->registerType($plugin, $before);
-
-        return $this;
     }
 
     /**
@@ -128,7 +157,7 @@ class ParsedownRuntime extends \ParsedownExtra implements ParsedownRuntimeInterf
         $this->{$p}[$plugin->marker()] = $t;
 
         if ($plugin->type()[0] === 'i') {
-            $this->inlineMarkerList .= $plugin->marker();
+            $this->{$plugin->type().'MarkerList'} .= $plugin->marker();
         }
     }
 }
