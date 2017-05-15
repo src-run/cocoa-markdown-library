@@ -1,0 +1,56 @@
+{
+  "name": "src-run/cocoa-parsedown-library",
+  "license": "MIT",
+  "type": "library",
+  "homepage": "https://src.run/cocoa-parsedown-library",
+  "description": "Simple markdown transformer library using the parsedown library with custom extensions.",
+  "support": {
+    "email": "rmf@src.run",
+    "issues": "https://src.run/cocoa-parsedown-library/issues",
+    "source": "https://src.run/cocoa-parsedown-library/git"
+  },
+  "keywords": [ "cocoa-parsedown-library", "cocoa", "parsedown", "markdown", "library", "rmf", "src-run" ],
+  "authors": [
+    {
+      "name": "Rob Frawley 2nd",
+      "email": "rmf@src.run",
+      "homepage": "https://src.run/rmf",
+      "role": "Project Lead"
+    }
+  ],
+  "require": {
+    "php": "~7.0",
+    "erusev/parsedown-extra": "~0.7",
+    "psr/cache": "~1.0",
+    "src-run/augustus-exception-library": "~0.7",
+    "src-run/cocoa-transformer-library": "~0.2"
+  },
+  "require-dev": {
+    "codacy/coverage": "~1.0",
+    "friendsofphp/php-cs-fixer": "~1.0",
+    "phpunit/phpunit": "~5.7",
+    "satooshi/php-coveralls": "~1.0",
+    "sllh/php-cs-fixer-styleci-bridge": "~2.1",
+    "symfony/cache": "~3.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "SR\\Cocoa\\Transformer\\Markdown\\": "lib/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SR\\Cocoa\\Transformer\\Markdown\\Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "bin-dir": "bin"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1-dev"
+    }
+  }
+}
