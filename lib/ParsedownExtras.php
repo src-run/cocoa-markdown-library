@@ -13,12 +13,12 @@ namespace SR\Cocoa\Transformer\Markdown;
 
 class ParsedownExtras extends \ParsedownExtra
 {
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
 
         $this->InlineTypes['@'] = ['Icons'];
-        $this->inlineMarkerList .= "@";
+        $this->inlineMarkerList .= '@';
 
         $this->InlineTypes['\\'][] = 'Newline';
         array_unshift($this->InlineTypes['\\'], 'Newline');
