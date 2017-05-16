@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the `src-run/cocoa-parsedown-library` project.
+ * This file is part of the `src-run/cocoa-markdown-library` project.
  *
  * (c) Rob Frawley 2nd <rmf@src.run>
  *
@@ -9,12 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace SR\Cocoa\Transformer\Parsedown\Runtime;
+namespace SR\Cocoa\Transformer\Markdown\Runtime;
 
-class ParsedownNormalRuntime extends \Parsedown implements ParsedownRuntimeInterface
+class RuntimeNormal extends \Parsedown implements RuntimeInterface
 {
-    use ParsedownRuntimeTrait;
+    use RuntimeTrait;
 
+    /**
+     * @param array $options
+     */
     public function __construct(array $options = [])
     {
         $this->setOptions($options);

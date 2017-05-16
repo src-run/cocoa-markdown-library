@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the `src-run/cocoa-parsedown-library` project.
+ * This file is part of the `src-run/cocoa-markdown-library` project.
  *
  * (c) Rob Frawley 2nd <rmf@src.run>
  *
@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace SR\Cocoa\Transformer\Parsedown\Tests;
+namespace SR\Cocoa\Transformer\Markdown\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Cache\CacheItemPoolInterface;
-use SR\Cocoa\Transformer\Parsedown\ParsedownTransformer;
-use SR\Cocoa\Transformer\Parsedown\Runtime\ParsedownNormalRuntime;
+use SR\Cocoa\Transformer\Markdown\MarkdownTransformer;
+use SR\Cocoa\Transformer\Markdown\Runtime\RuntimeNormal;
 use SR\Cocoa\Transformer\TransformerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
@@ -51,22 +51,21 @@ class ParsedownTransformerTest extends TestCase
 
         $transformer = $this->getParsedownTransformerInstance();
 
-        if (false !== strpos($providedFile, 'extras-disabled')) {
-            $transformer->setExtra(false);
+        if (false !== strpos($providedFile, 'custom-runtime')) {
+            $transformer->setRuntime(new RuntimeNormal());
         }
 
-        if (false !== strpos($providedFile, 'custom-instance')) {
-            $transformer->setExtra(false);
-            $transformer->setRuntime(new ParsedownNormalRuntime());
+        if (false !== strpos($providedFile, 'inline')) {
+            $transformer->setBlock(false);
         }
 
         $this->assertSame($expected, $transformer->transform($provided),
             sprintf('Input markdown "%s" should compile into output html "%s"', $providedFile, $expectedFile));
     }
 
-    private function getParsedownTransformerInstance(CacheItemPoolInterface $cache = null, \DateInterval $expiredAfter = null): ParsedownTransformer
+    private function getParsedownTransformerInstance(CacheItemPoolInterface $cache = null, \DateInterval $expiredAfter = null): MarkdownTransformer
     {
-        return new ParsedownTransformer($cache ?: $this->getArrayAdapterMock(), $expiredAfter);
+        return new MarkdownTransformer($cache ?: $this->getArrayAdapterMock(), $expiredAfter);
     }
 
     /**

@@ -1,25 +1,25 @@
 
-# [src-run] cocoa-parsedown-library
+# [src-run] cocoa-markdown-library
 
 |       Travis-CI        |      Codacy Rating      |      Code Coverage      |        Style-CI         |         Release         |    API Documentation    |
 |:----------------------:|:-----------------------:|:-----------------------:|:-----------------------:|:-----------------------:|:-----------------------:|
-| [![Travis](https://src.run/cocoa-parsedown-library/travis.svg)](https://src.run/cocoa-parsedown-library/travis) | [![Codacy](https://src.run/cocoa-parsedown-library/codacy.svg)](https://src.run/cocoa-parsedown-library/codacy) | [![Coveralls](https://src.run/cocoa-parsedown-library/coveralls.svg)](https://src.run/cocoa-parsedown-library/coveralls) | [![Coveralls](https://src.run/cocoa-parsedown-library/styleci.svg)](https://src.run/cocoa-parsedown-library/styleci) | [![Packagist](https://src.run/cocoa-parsedown-library/packagist.svg)](https://src.run/cocoa-parsedown-library/packagist) | [![API Docs](https://src.run/cocoa-parsedown-library/api.svg)](https://src.run/cocoa-parsedown-library/api) |
+| [![Travis](https://src.run/cocoa-markdown-library/travis.svg)](https://src.run/cocoa-markdown-library/travis) | [![Codacy](https://src.run/cocoa-markdown-library/codacy.svg)](https://src.run/cocoa-markdown-library/codacy) | [![Coveralls](https://src.run/cocoa-markdown-library/coveralls.svg)](https://src.run/cocoa-markdown-library/coveralls) | [![Coveralls](https://src.run/cocoa-markdown-library/styleci.svg)](https://src.run/cocoa-markdown-library/styleci) | [![Packagist](https://src.run/cocoa-markdown-library/packagist.svg)](https://src.run/cocoa-markdown-library/packagist) | [![API Docs](https://src.run/cocoa-markdown-library/api.svg)](https://src.run/cocoa-markdown-library/api) |
 
 
 ## Overview
 
 [Welcome](https://src.run/go/readme_welcome)!
-The `src-run/cocoa-parsedown-library` package provides the following
+The `src-run/cocoa-markdown-library` package provides the following
 
-> Simple markdown transformer library using the parsedown library with custom extensions.
+> Simple PHP-based markdown transformer library with support for custom runtimes and plugins.
 
 ### Grouping
 
 We use a Willy Wonka-inspired naming schema for our package group names. This package is part of the
-[cocoa group](https://src.run/cocoa-parsedown-library/group), which is a collection of packages with a focus
+[cocoa group](https://src.run/cocoa-markdown-library/group), which is a collection of packages with a focus
 on "core reflection base classes" and related functionality.
 
-You are welcome to research some [useless details](https://src.run/cocoa-parsedown-library/group_explanation)
+You are welcome to research some [useless details](https://src.run/cocoa-markdown-library/group_explanation)
 about this specific group if you have too much time on your hands.
 
 ### JTT
@@ -29,7 +29,7 @@ released under the "SR" namespace, comprised of many framework-agnostic librarie
 well as some one-off releases. This project is authored and maintained by:
 
 - [Rob Frawley 2nd](https://src.run/rmf)
-- [Collaborators](https://src.run/cocoa-parsedown-library/github_collaborators)
+- [Collaborators](https://src.run/cocoa-markdown-library/github_collaborators)
 
 
 ## Quick Start
@@ -41,14 +41,14 @@ Get the code by requiring it explicitly via the [Composer](https://getcomposer.c
 this project using the CLI, use the following command.
 
 ```bash
-$ composer require src-run/cocoa-parsedown-library
+$ composer require src-run/cocoa-markdown-library
 ```
 
 Alternatively, to add this project to your "composer.json" file, add the following to the "require" section.
 
 ```json
 require: {
-	"src-run/cocoa-parsedown-library": "dev-master"
+	"src-run/cocoa-markdown-library": "dev-master"
 }
 ```
 
@@ -90,7 +90,7 @@ discuss language-level ideas, possible new directions for a project, emerging te
 
 ### Issues
 
-To report issues or request a new feature, use the [project issue tracker](https://src.run/cocoa-parsedown-library/github_issues).
+To report issues or request a new feature, use the [project issue tracker](https://src.run/cocoa-markdown-library/github_issues).
 Include as much information as possible in any bug reports. Feel free to "ping" the topic if you don't get a response
 within a few days (sometimes Github notification e-mails fall through the cracks).
 
@@ -98,14 +98,14 @@ within a few days (sometimes Github notification e-mails fall through the cracks
 
 You created additional functionality while utilizing this package? Wonderful: send it back upstream! *Don't hesitate to
 submit a pull request!* Your [imagination](https://src.run/go/readme_imagination) and the requirements outlined within
-our [CONTRIBUTING.md](https://src.run/cocoa-parsedown-library/contributing) file are the only limitations.
+our [CONTRIBUTING.md](https://src.run/cocoa-markdown-library/contributing) file are the only limitations.
 
 
 ## License
 
 This project is licensed under the [MIT License](https://src.run/go/mit), an [FSF](https://src.run/go/fsf)- and 
 [OSI](https://src.run/go/osi)-approved, [GPL](https://src.run/go/gpl)-compatible, permissive free software license.
-Review the [LICENSE](https://src.run/cocoa-parsedown-library/license) file distributed with this source code for additional
+Review the [LICENSE](https://src.run/cocoa-markdown-library/license) file distributed with this source code for additional
 information.
 
 
@@ -113,7 +113,7 @@ information.
 
 | Item               | Result/Status                                                                                                      |
 |-------------------:|:-------------------------------------------------------------------------------------------------------------------|
-| __Stable Release__ | [![Packagist](https://src.run/cocoa-parsedown-library/packagist.svg)](https://src.run/cocoa-parsedown-library/packagist)     |
-| __Dev Release__    | [![Packagist](https://src.run/cocoa-parsedown-library/packagist_pre.svg)](https://src.run/cocoa-parsedown-library/packagist) |
-| __License__        | [![License](https://src.run/cocoa-parsedown-library/license.svg)](https://src.run/cocoa-parsedown-library/license)           |
+| __Stable Release__ | [![Packagist](https://src.run/cocoa-markdown-library/packagist.svg)](https://src.run/cocoa-markdown-library/packagist)     |
+| __Dev Release__    | [![Packagist](https://src.run/cocoa-markdown-library/packagist_pre.svg)](https://src.run/cocoa-markdown-library/packagist) |
+| __License__        | [![License](https://src.run/cocoa-markdown-library/license.svg)](https://src.run/cocoa-markdown-library/license)           |
 

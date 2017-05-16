@@ -11,6 +11,6 @@ php_exts: ~
 app_prep: dep-composer
 app_post: ~
 app_path: ~
-pkg_name: cocoa-parsedown-library
-pkg_desc: "Simple markdown transformer library using the parsedown library with custom extensions."
+pkg_name: cocoa-markdown-library
+pkg_desc: "Simple PHP-based markdown transformer library with support for custom runtimes and plugins."
 pkg_bndl: false

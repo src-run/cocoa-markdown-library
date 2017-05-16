@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the `src-run/cocoa-parsedown-library` project.
+ * This file is part of the `src-run/cocoa-markdown-library` project.
  *
  * (c) Rob Frawley 2nd <rmf@src.run>
  *
@@ -9,16 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace SR\Cocoa\Transformer\Parsedown\Runtime;
+namespace SR\Cocoa\Transformer\Markdown\Runtime;
 
+use SR\Cocoa\Transformer\Markdown\Plugin\InlineIconPlugin;
+use SR\Cocoa\Transformer\Markdown\Plugin\InlineNewlinePlugin;
 
-use SR\Cocoa\Transformer\Parsedown\Plugin\InlineIconPlugin;
-use SR\Cocoa\Transformer\Parsedown\Plugin\InlineNewlinePlugin;
-
-class ParsedownExtraRuntime extends \ParsedownExtra implements ParsedownRuntimeInterface
+class RuntimeExtended extends \ParsedownExtra implements RuntimeInterface
 {
-    use ParsedownRuntimeTrait;
+    use RuntimeTrait;
 
+    /**
+     * @param array $options
+     */
     public function __construct(array $options = [])
     {
         parent::__construct();

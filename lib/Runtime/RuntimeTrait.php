@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the `src-run/cocoa-parsedown-library` project.
+ * This file is part of the `src-run/cocoa-markdown-library` project.
  *
  * (c) Rob Frawley 2nd <rmf@src.run>
  *
@@ -9,16 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace SR\Cocoa\Transformer\Parsedown\Runtime;
+namespace SR\Cocoa\Transformer\Markdown\Runtime;
 
-use SR\Cocoa\Transformer\Parsedown\Plugin\PluginBlockInterface;
-use SR\Cocoa\Transformer\Parsedown\Plugin\PluginInlineInterface;
-use SR\Cocoa\Transformer\Parsedown\Plugin\PluginInterface;
+use SR\Cocoa\Transformer\Markdown\Plugin\PluginBlockInterface;
+use SR\Cocoa\Transformer\Markdown\Plugin\PluginInlineInterface;
+use SR\Cocoa\Transformer\Markdown\Plugin\PluginInterface;
 use SR\Exception\Logic\BadMethodCallException;
 use SR\Exception\Runtime\RuntimeException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-trait ParsedownRuntimeTrait
+trait RuntimeTrait
 {
     /**
      * @var PluginInlineInterface[]
@@ -32,7 +32,7 @@ trait ParsedownRuntimeTrait
 
     /**
      * @param string $name
-     * @param array $arguments
+     * @param array  $arguments
      *
      * @return mixed
      */
@@ -104,7 +104,7 @@ trait ParsedownRuntimeTrait
     private function callPluginInl(string $name, array $arguments)
     {
         if (isset($this->pluginsI[$name = substr($name, 6)])) {
-            return $this->pluginsI[$name]->invoke(...$arguments);
+            return $this->pluginsI[$name]->invoke(...$arguments)->getResult();
         }
 
         return null;
@@ -118,8 +118,8 @@ trait ParsedownRuntimeTrait
      */
     private function callPluginBlk(string $name, array $arguments)
     {
-        if (isset($this->pluginsB[$name = substr($name, 6)])) {
-            return $this->pluginsB[$name]->invoke(...$arguments);
+        if (isset($this->pluginsB[$name = substr($name, 5)])) {
+            return $this->pluginsB[$name]->invoke(...$arguments)->getResult();
         }
 
         return null;
@@ -141,8 +141,7 @@ trait ParsedownRuntimeTrait
 
     /**
      * @param PluginInterface $plugin
-     *
-     * @param bool $before
+     * @param bool            $before
      */
     private function registerType(PluginInterface $plugin, bool $before)
     {

@@ -9,13 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace SR\Cocoa\Transformer\Markdown\Plugin;
+namespace SR\Cocoa\Transformer\Markdown\Tests\Fixtures\Plugin;
 
-use SR\Cocoa\Transformer\Markdown\Plugin\Result\EmptyResult;
+use SR\Cocoa\Transformer\Markdown\Plugin\PluginInterface;
+use SR\Cocoa\Transformer\Markdown\Plugin\PluginNamedTrait;
+use SR\Cocoa\Transformer\Markdown\Plugin\PluginTypedTrait;
 use SR\Cocoa\Transformer\Markdown\Plugin\Result\MatchResult;
 use SR\Cocoa\Transformer\Markdown\Plugin\Result\ResultInterface;
 
-class InlineNewlinePlugin implements PluginInlineInterface
+class UnknownPlugin implements PluginInterface
 {
     use PluginNamedTrait;
     use PluginTypedTrait;
@@ -25,7 +27,7 @@ class InlineNewlinePlugin implements PluginInlineInterface
      */
     public function marker(): string
     {
-        return '\\';
+        return '+';
     }
 
     /**
@@ -35,14 +37,6 @@ class InlineNewlinePlugin implements PluginInlineInterface
      */
     public function invoke(array $excerpt): ResultInterface
     {
-        if (1 !== preg_match('{(?<escape>\\\)?(?<newline>\\\n)}', $excerpt['text'], $matches)) {
-            return new EmptyResult();
-        }
-
-        if ($matches['escape']) {
-            return new EmptyResult();
-        }
-
-        return new MatchResult(array_shift($matches), 'br', 'line');
+        return new MatchResult('text', 'i', 'line');
     }
 }

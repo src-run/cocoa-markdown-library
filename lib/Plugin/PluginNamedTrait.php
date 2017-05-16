@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the `src-run/cocoa-parsedown-library` project.
+ * This file is part of the `src-run/cocoa-markdown-library` project.
  *
  * (c) Rob Frawley 2nd <rmf@src.run>
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace SR\Cocoa\Transformer\Parsedown\Plugin;
+namespace SR\Cocoa\Transformer\Markdown\Plugin;
 
 use SR\Exception\Runtime\RuntimeException;
 
@@ -21,7 +21,7 @@ trait PluginNamedTrait
     public function name(): string
     {
         if (1 === preg_match('{(Inline|Block)(?<name>[A-Za-z]+)Plugin$}', get_called_class(), $matches)) {
-            return $matches['name'];
+            return strtolower($matches['name']);
         }
 
         throw new RuntimeException('Unable to automatically determine plugin name of "%s"', get_called_class());

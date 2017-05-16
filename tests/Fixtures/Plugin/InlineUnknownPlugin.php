@@ -9,8 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace SR\Cocoa\Transformer\Markdown\Runtime\Tests\Fixtures;
+namespace SR\Cocoa\Transformer\Markdown\Tests\Fixtures\Plugin;
 
-class CustomParsedown extends \Parsedown
+use SR\Cocoa\Transformer\Markdown\Plugin\PluginInlineInterface;
+
+class InlineUnknownPlugin extends UnknownPlugin implements PluginInlineInterface
 {
 }

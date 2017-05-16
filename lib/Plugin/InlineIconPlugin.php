@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the `src-run/cocoa-parsedown-library` project.
+ * This file is part of the `src-run/cocoa-markdown-library` project.
  *
  * (c) Rob Frawley 2nd <rmf@src.run>
  *
@@ -9,12 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace SR\Cocoa\Transformer\Parsedown\Plugin;
+namespace SR\Cocoa\Transformer\Markdown\Plugin;
+
+use SR\Cocoa\Transformer\Markdown\Plugin\Result\EmptyResult;
+use SR\Cocoa\Transformer\Markdown\Plugin\Result\MatchResult;
+use SR\Cocoa\Transformer\Markdown\Plugin\Result\ResultInterface;
 
 class InlineIconPlugin implements PluginInlineInterface
 {
     use PluginNamedTrait;
-    use PluginResponseTrait;
     use PluginTypedTrait;
 
     /**
@@ -28,15 +31,18 @@ class InlineIconPlugin implements PluginInlineInterface
     /**
      * @param array $excerpt
      *
-     * @return array|null
+     * @return ResultInterface
      */
-    public function invoke(array $excerpt) {
+    public function invoke(array $excerpt): ResultInterface
+    {
         if (1 !== preg_match('{^@(?<type>fa|ion):(?<name>[a-z\-]+)}', $excerpt['text'], $matches)) {
-            return $this->responseNotMatch();
+            return new EmptyResult();
         }
 
-        return $this->responseMatch(array_shift($matches), 'i', 'line', '', [
-            'class' => sprintf('icon %s %s-%s', $matches['type'], $matches['type'], $matches['name']),
-        ]);
+        return (new MatchResult(array_shift($matches), 'i', 'line'))
+            ->setElementText('')
+            ->setElementAttributes([
+                'class' => sprintf('icon %s %s-%s', $matches['type'], $matches['type'], $matches['name']),
+            ]);
     }
 }

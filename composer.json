@@ -1,15 +1,15 @@
 {
-  "name": "src-run/cocoa-parsedown-library",
+  "name": "src-run/cocoa-markdown-library",
   "license": "MIT",
   "type": "library",
-  "homepage": "https://src.run/cocoa-parsedown-library",
-  "description": "Simple markdown transformer library using the parsedown library with custom extensions.",
+  "homepage": "https://src.run/cocoa-markdown-library",
+  "description": "Simple PHP-based markdown transformer library with support for custom runtimes and plugins.",
   "support": {
     "email": "rmf@src.run",
-    "issues": "https://src.run/cocoa-parsedown-library/issues",
-    "source": "https://src.run/cocoa-parsedown-library/git"
+    "issues": "https://src.run/cocoa-markdown-library/issues",
+    "source": "https://src.run/cocoa-markdown-library/git"
   },
-  "keywords": [ "cocoa-parsedown-library", "cocoa", "parsedown", "markdown", "library", "rmf", "src-run" ],
+  "keywords": [ "cocoa-markdown-library", "cocoa", "parsedown", "markdown", "library", "rmf", "src-run" ],
   "authors": [
     {
       "name": "Rob Frawley 2nd",
@@ -36,12 +36,12 @@
   },
   "autoload": {
     "psr-4": {
-      "SR\\Cocoa\\Transformer\\Parsedown\\": "lib/"
+      "SR\\Cocoa\\Transformer\\Markdown\\": "lib/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "SR\\Cocoa\\Transformer\\Parsedown\\Tests\\": "tests/"
+      "SR\\Cocoa\\Transformer\\Markdown\\Tests\\": "tests/"
     }
   },
   "minimum-stability": "dev",

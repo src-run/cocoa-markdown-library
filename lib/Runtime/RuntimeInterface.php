@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the `src-run/cocoa-parsedown-library` project.
+ * This file is part of the `src-run/cocoa-markdown-library` project.
  *
  * (c) Rob Frawley 2nd <rmf@src.run>
  *
@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace SR\Cocoa\Transformer\Parsedown\Runtime;
+namespace SR\Cocoa\Transformer\Markdown\Runtime;
 
-use SR\Cocoa\Transformer\Parsedown\Plugin\PluginInterface;
+use SR\Cocoa\Transformer\Markdown\Plugin\PluginInterface;
 
-interface ParsedownRuntimeInterface
+interface RuntimeInterface
 {
     /**
      * @param array $options

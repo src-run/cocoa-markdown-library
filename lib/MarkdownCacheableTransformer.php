@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the `src-run/cocoa-parsedown-library` project.
+ * This file is part of the `src-run/cocoa-markdown-library` project.
  *
  * (c) Rob Frawley 2nd <rmf@src.run>
  *
@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace SR\Cocoa\Transformer\Parsedown;
+namespace SR\Cocoa\Transformer\Markdown;
 
 use SR\Cocoa\Transformer\AbstractCacheableTransformer;
 
-class CacheableParsedownTransformer extends AbstractCacheableTransformer
+class MarkdownCacheableTransformer extends AbstractCacheableTransformer
 {
-    use ParsedownTransformerTrait;
+    use MarkdownTransformerTrait;
 }

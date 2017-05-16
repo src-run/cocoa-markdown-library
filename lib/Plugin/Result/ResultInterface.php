@@ -9,8 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace SR\Cocoa\Transformer\Markdown\Runtime\Tests\Fixtures;
+namespace SR\Cocoa\Transformer\Markdown\Plugin\Result;
 
-class CustomParsedown extends \Parsedown
+interface ResultInterface
 {
+    /**
+     * @return array|null
+     */
+    public function getResult();
 }
