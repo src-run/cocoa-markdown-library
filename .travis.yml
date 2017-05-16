@@ -11,7 +11,7 @@
 
 sudo     : false
 language : php
-php      : [ 7.0, 7.1, nightly ]
+php      : [ 7.0, 7.1 ]
 
 git:
   depth : 3
