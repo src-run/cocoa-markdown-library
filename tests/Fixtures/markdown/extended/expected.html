@@ -16,7 +16,12 @@ echo "Something"</code></pre>
 <p>A simple command <code>echo $1</code> and a <br /> forced return and an escaped \n return and \prefixed text.</p>
 <p>A <a href="#custom-id">Link back to header 1</a> and some text with a footnote.<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref">1</a></sup></p>
 <p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
-<p><a href="https://src.run">https://src.run</a></p>
+<p>An inline link <a href="https://src.run">https://src.run</a> that should be transformed into a <abbr title="Hyper Text Markup Language">HTML</abbr> hyperlink automatically.</p>
+<p>This paragraph is special, as it contains a <span data-pull-quote="&quot;pull quote that will be given a special treatment by duplicating the content in a data-pull-link attribute&quot;">pull quote that will be given a special treatment by duplicating the
+content in a data-pull-link attribute</span> which allows you to use special CSS to position the attribute content in whatever
+pull quote style you'd like.</p>
+<p>Alternatively, this paragraph should not cause a pull quote to be created with only an opening { and no closing bracket
+closing it. Even more, you can escape the pull quote behavior {using a forward slash before the opening bracket}.</p>
 <hr />
 <dl>
 <dt>Apple</dt>

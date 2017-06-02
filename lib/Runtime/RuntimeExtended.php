@@ -13,6 +13,7 @@ namespace SR\Cocoa\Transformer\Markdown\Runtime;
 
 use SR\Cocoa\Transformer\Markdown\Plugin\InlineIconPlugin;
 use SR\Cocoa\Transformer\Markdown\Plugin\InlineNewlinePlugin;
+use SR\Cocoa\Transformer\Markdown\Plugin\InlinePullQuotePlugin;
 
 class RuntimeExtended extends \ParsedownExtra implements RuntimeInterface
 {
@@ -28,5 +29,6 @@ class RuntimeExtended extends \ParsedownExtra implements RuntimeInterface
         $this->setOptions($options);
         $this->registerPlugin(new InlineIconPlugin());
         $this->registerPlugin(new InlineNewlinePlugin(), true);
+        $this->registerPlugin(new InlinePullQuotePlugin());
     }
 }
