@@ -16,6 +16,5 @@ enabled:
 finder :
   name    : [ '*.php' ]
   exclude : [ 'vendor', 'var' ]
-  path    : [ '.' ]
 
 ...
