@@ -14,7 +14,7 @@ enabled:
   - short_array_syntax
 
 finder :
-  name    : [ '*.php' ]
-  exclude : [ 'vendor', 'var' ]
+  name: '*.php'
+  path: 'lib/'
 
 ...

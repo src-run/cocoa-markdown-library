@@ -9,9 +9,12 @@
  * file that was distributed with this source code.
  */
 
+require __DIR__.'/.bldr/_helpers/php-cs-fixer/config.php';
+
 $options = [
     'project' => 'src-run/cocoa-markdown-library',
     'author'  => 'Rob Frawley 2nd <rmf@src.run>',
+    'location' => __DIR__,
 ];
 
-return require __DIR__.'/.bldr/_helpers/php-cs-fixer/config.php';
+return (new SR\PhpCsFixer\Config($options ?? []))->create();
