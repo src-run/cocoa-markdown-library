@@ -29,12 +29,13 @@ The HTML specification is maintained by the W3C.
 
 An inline link https://src.run that should be transformed into a HTML hyperlink automatically.
 
-This paragraph is special, as it contains a {pull quote that will be given a special treatment by duplicating the
+This paragraph is special, as it contains a {>pull quote that will be given a special treatment by duplicating the
 content in a data-pull-link attribute} which allows you to use special CSS to position the attribute content in whatever
 pull quote style you'd like.
 
-Alternatively, this paragraph should not cause a pull quote to be created with only an opening { and no closing bracket
-closing it. Even more, you can escape the pull quote behavior \{using a forward slash before the opening bracket}.
+Alternatively, this paragraph should not cause a pull quote to be created with only an opening {> and no closing bracket
+closing it. Even more, you can escape the pull quote behavior \{>using a forward slash before the opening bracket}. Also,
+brackets { without a greater than sign} don't cause pull quotes and escaping the greater than sign {\> works as well.}
 
 ---
 

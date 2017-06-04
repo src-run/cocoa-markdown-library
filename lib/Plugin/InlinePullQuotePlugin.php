@@ -35,7 +35,7 @@ class InlinePullQuotePlugin implements PluginInlineInterface
      */
     public function invoke(array $excerpt): ResultInterface
     {
-        if (1 !== preg_match('{^\{(?<quote>[^\}\{]+)\}}', $excerpt['text'], $matches)) {
+        if (1 !== preg_match('{^\{>(?<quote>[^\}\{]+)\}}', $excerpt['text'], $matches)) {
             return new EmptyResult();
         }
 
